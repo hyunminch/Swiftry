@@ -8,6 +8,6 @@ Pod::Spec.new do |spec|
 
   spec.platform = :ios, "9.0"
   spec.requires_arc = true
-  spec.source = { git: "git@github.com:nitrogenice/Swiftry.git", tag: "#{spec.version}", submodules: true }
+  spec.source = { git: "https://github.com/nitrogenice/Swiftry.git", tag: "#{spec.version}", submodules: true }
   spec.source_files = "Sources/*.{h,swift}"
 end
