@@ -1,11 +1,10 @@
 Pod::Spec.new do |spec|
   spec.name = "Swiftry"
-  spec.version = "0.1.0"
+  spec.version = "0.1.1"
   spec.summary = "A simple Swift Try framework."
   spec.homepage = "https://github.com/nitrogenice/Swiftry"
   spec.license = { type: 'MIT', file: 'LICENSE' }
   spec.authors = { "Hyun Min Choi" => 'hyunmin.personal@gmail.com' }
-  spec.social_media_url = "http://twitter.com/thoughtbot"
 
   spec.platform = :ios, "9.0"
   spec.requires_arc = true
