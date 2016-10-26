@@ -77,8 +77,9 @@
 				410C39C71DC0BCCC00D78629 /* Info.plist */,
 				410C39DD1DC0BCDF00D78629 /* Swiftry.swift */,
 			);
-			path = Swiftry;
-			sourceTree = "<group>";
+			name = Swiftry;
+			path = /Users/hyunmin/Development/Swiftry/Sources;
+			sourceTree = "<absolute>";
 		};
 		410C39D01DC0BCCC00D78629 /* SwiftryTests */ = {
 			isa = PBXGroup;
@@ -86,7 +87,8 @@
 				410C39D11DC0BCCC00D78629 /* SwiftryTests.swift */,
 				410C39D31DC0BCCC00D78629 /* Info.plist */,
 			);
-			path = SwiftryTests;
+			name = SwiftryTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,7 +336,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Swiftry/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.hyunmin-choi.Swiftry";
@@ -355,7 +357,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Swiftry/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.hyunmin-choi.Swiftry";
@@ -370,7 +372,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = TK7RJD3LLR;
-				INFOPLIST_FILE = SwiftryTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.hyunmin-choi.SwiftryTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -383,7 +385,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = TK7RJD3LLR;
-				INFOPLIST_FILE = SwiftryTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.hyunmin-choi.SwiftryTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -410,6 +412,7 @@
 				410C39D91DC0BCCC00D78629 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		410C39DA1DC0BCCC00D78629 /* Build configuration list for PBXNativeTarget "SwiftryTests" */ = {
 			isa = XCConfigurationList;
@@ -418,6 +421,7 @@
 				410C39DC1DC0BCCC00D78629 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
