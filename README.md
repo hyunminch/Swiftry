@@ -83,3 +83,21 @@ let f: (Int) -> Int = { return 2 * $0 }
 let tOp = Swiftry(5) <^> f
 let tCall = Swiftry(5).map(f)
 ```
+
+## Installation
+
+#### [CocoaPods](https://cocoapods.org)
+Add the following line to your Podfile.
+```ruby
+pod 'Swiftry', '~> 0.1.3'
+```
+
+#### [Carthage](https://github.com/Carthage/Carthage)
+Add the following line to your Cartfile.
+```
+github "nitrogenice/Swiftry" ~> 0.1.3
+```
+
+## License
+
+**Swiftry** is under an MIT license. See the [LICENSE](LICENSE) file for more information.
