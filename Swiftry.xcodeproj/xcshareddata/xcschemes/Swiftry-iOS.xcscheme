@@ -28,26 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "410C39CB1DC0BCCC00D78629"
-               BuildableName = "SwiftryTests.xctest"
-               BlueprintName = "SwiftryTests"
-               ReferencedContainer = "container:Swiftry.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "410C39C21DC0BCCC00D78629"
-            BuildableName = "Swiftry.framework"
-            BlueprintName = "Swiftry"
-            ReferencedContainer = "container:Swiftry.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
