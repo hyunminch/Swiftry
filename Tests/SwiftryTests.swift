@@ -69,7 +69,7 @@ class SwiftryTests: XCTestCase {
         XCTAssert(t3.isErrored)
         
         let t4 = Swiftry({ try self.c1(255) })
-        XCTAssert(t4.isErrored)
+        XCTAssert(t4.isErrored)        
     }
     
     func testOrElse() {
@@ -122,5 +122,42 @@ class SwiftryTests: XCTestCase {
         let t2 = Swiftry<Double>(error: SwiftryError.someError)
         let o2 = t2.toOption
         XCTAssert(o2 == nil)
+    }
+    
+    enum MyError: Error {
+        case error
+    }
+    
+    func useCase1() {
+        let divideTwo: (Int) -> Swiftry<Int> = { x in
+            Swiftry({
+                if x % 2 == 0 {
+                    return x / 2
+                } else {
+                    throw MyError.error
+                }
+            })
+        }
+        
+        let result = Swiftry(value: 8) >>- divideTwo >>- divideTwo >>- divideTwo
+        XCTAssert(result.get == 1)
+        XCTAssert((result >>- divideTwo).isErrored)
+    }
+    
+    func useCase2() {
+        let x = 15
+        let y = 5
+        let z = 0
+        XCTAssert((
+            Swiftry {
+                if z == 0 {
+                    throw MyError.error
+                } else {
+                    return y / z
+                }
+            } => Swiftry {
+                x / y
+            }).get == 3
+        )
     }
 }
