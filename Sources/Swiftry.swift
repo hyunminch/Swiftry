@@ -26,12 +26,28 @@ public enum Swiftry<T> {
     case success(T)
     case failure(Error)
     
-    public init(_ closure: () throws -> T) {
+    public init(_ closure: @escaping () throws -> T) {
         do {
             self = .success(try closure())
         } catch let e {
             self = .failure(e)
         }
+    }
+    
+    public init(_ closure: @escaping () -> T) {
+        self = .success(closure())
+    }
+    
+    public init(_ closure: @autoclosure () throws -> T) {
+        do {
+            self = .success(try closure())
+        } catch let e {
+            self = .failure(e)
+        }
+    }
+    
+    public init(_ closure: @autoclosure () -> T) {
+        self = .success(closure())
     }
     
     public init(value: T) {
@@ -78,7 +94,7 @@ public enum Swiftry<T> {
         }
     }
     
-    public var asOptional: Optional<T> {
+    public var toOption: Optional<T> {
         switch self {
         case let .success(t):
             return t
@@ -123,9 +139,9 @@ public enum Swiftry<T> {
     }
 }
 
-infix operator <->: AdditionPrecedence
+infix operator =>: AdditionPrecedence
 
-public func <-><T>(lhs: Swiftry<T>, rhs: @autoclosure () -> Swiftry<T>) -> Swiftry<T> {
+public func =><T>(lhs: Swiftry<T>, rhs: @autoclosure () -> Swiftry<T>) -> Swiftry<T> {
     return lhs.orElse(rhs)
 }
 
