@@ -94,13 +94,13 @@ let tCall = Swiftry(5).map(f)
 #### [CocoaPods](https://cocoapods.org)
 Add the following line to your Podfile.
 ```ruby
-pod 'Swiftry', '~> 0.1.3'
+pod 'Swiftry', '~> 0.1.4'
 ```
 
 #### [Carthage](https://github.com/Carthage/Carthage)
 Add the following line to your Cartfile.
 ```
-github "nitrogenice/Swiftry" ~> 0.1.3
+github "nitrogenice/Swiftry" ~> 0.1.4
 ```
 
 ## License
