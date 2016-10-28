@@ -22,10 +22,12 @@
 
 import Foundation
 
+/// Swiftry is an abstraction over Swift's error handling.
 public enum Swiftry<T> {
     case success(T)
     case failure(Error)
     
+    /// - Parameter closure: closure that generates a value of type T or throws an error
     public init(_ closure: @escaping () throws -> T) {
         do {
             self = .success(try closure())
@@ -34,10 +36,12 @@ public enum Swiftry<T> {
         }
     }
     
+    /// - Parameter closure: closure that generates a value of type T
     public init(_ closure: @escaping () -> T) {
         self = .success(closure())
     }
     
+    /// - Parameter closure: closure that generates a value of type T or throws an error
     public init(_ closure: @autoclosure () throws -> T) {
         do {
             self = .success(try closure())
@@ -46,6 +50,7 @@ public enum Swiftry<T> {
         }
     }
     
+    /// - Parameter closure: closure that generates a value of type T
     public init(_ closure: @autoclosure () -> T) {
         self = .success(closure())
     }
@@ -58,11 +63,17 @@ public enum Swiftry<T> {
         self = .failure(error)
     }
     
+    //: Given a function of type `(T) -> U`, maps a `Swiftry<T>` instance to a `Swiftry<U>` instance.
+    /// - Parameter f: the function to be applied to the instance's value, if self is of case .success
+    /// - Returns: Swiftry<U>
     public func map<U>(_ f: @escaping (T) -> U) -> Swiftry<U> {
         let sugar: (T) throws -> U = f
         return self.map(sugar)
     }
     
+    //: Given a function of type `(T) throws -> U`, maps a `Swiftry<T>` instance to a `Swiftry<U>` instance.
+    /// - Parameter f: the function to be applied to the instance's value, if self is of case .success
+    /// - Returns: Swiftry<U>
     public func map<U>(_ f: @escaping (T) throws -> U) -> Swiftry<U> {
         switch self {
         case let .success(t):
@@ -76,11 +87,17 @@ public enum Swiftry<T> {
         }
     }
     
+    //: Given a function of type `(T) -> Swiftry<U>`, maps a `Swiftry<T>` instance to a `Swiftry<U>` instance.
+    /// - Parameter f: the function to be applied to the instance's value, if self is of case .success
+    /// - Returns: Swiftry<U>
     public func flatMap<U>(_ f: @escaping (T) -> Swiftry<U>) -> Swiftry<U> {
         let sugar: (T) throws -> Swiftry<U> = f
         return self.flatMap(sugar)
     }
     
+    //: Given a function of type `(T) throws -> Swiftry<U>`, maps a `Swiftry<T>` instance to a `Swiftry<U>` instance.
+    /// - Parameter f: the function to be applied to the instance's value, if self is of case .success
+    /// - Returns: Swiftry<U>
     public func flatMap<U>(_ f: @escaping (T) throws -> Swiftry<U>) -> Swiftry<U> {
         switch self {
         case let .success(t):
@@ -94,6 +111,9 @@ public enum Swiftry<T> {
         }
     }
     
+    /// Converts this instance of an equivalent optional type.
+    /// 
+    /// When `self.isErrored == true`, this conversion leads to the loss of error.
     public var toOption: Optional<T> {
         switch self {
         case let .success(t):
@@ -103,6 +123,7 @@ public enum Swiftry<T> {
         }
     }
     
+    /// Chains another `Swiftry<T>` and returns a new `Swiftry<T>`
     public func orElse(_ rightTry: @autoclosure () -> Swiftry<T>) -> Swiftry<T> {
         switch self {
         case .success(_):
@@ -112,10 +133,14 @@ public enum Swiftry<T> {
         }
     }
     
+    /// Returns the wrapped value of this instance. 
+    ///
+    /// Use at caution, as this will crash when `self.isError == true`
     public var get: T {
         return try! _get()
     }
     
+    /// Whether this instance contains a value
     public var isSuccessful: Bool {
         switch self {
         case .success(_):
@@ -125,6 +150,7 @@ public enum Swiftry<T> {
         }
     }
     
+    /// Whether this instance contains an error
     public var isErrored: Bool {
         return !self.isSuccessful
     }
