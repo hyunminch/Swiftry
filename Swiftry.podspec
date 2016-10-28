@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = "Swiftry"
-  spec.version = "0.1.3"
+  spec.version = "0.1.4"
   spec.summary = "A simple Swift Try framework."
   spec.homepage = "https://github.com/nitrogenice/Swiftry"
   spec.license = { type: 'MIT', file: 'LICENSE' }
